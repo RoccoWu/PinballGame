@@ -6,7 +6,7 @@
             "id": "7f80e358-8577-452e-8d3b-b850abb6b431",
             "actions": [
                 {
-                    "name": "FliiperRight",
+                    "name": "FlipperRight",
                     "type": "Button",
                     "id": "27ca2e61-64f4-48c4-8eb9-c070d837edd3",
                     "expectedControlType": "Button",
@@ -41,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FliiperRight",
+                    "action": "FlipperRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -52,7 +52,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FliiperRight",
+                    "action": "FlipperRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
