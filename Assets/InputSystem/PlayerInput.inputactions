@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LaunchBall",
+                    "name": "BallLauncher",
                     "type": "Button",
                     "id": "f484203d-4b2b-4b2a-8b1f-9f2565148c8f",
                     "expectedControlType": "Button",
@@ -85,7 +85,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LaunchBall",
+                    "action": "BallLauncher",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -96,7 +96,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LaunchBall",
+                    "action": "BallLauncher",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
