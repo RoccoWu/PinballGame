@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 {
     private PlayerInput playerInput;
+    private FlipperScript flipperscript;
+    private GameObject rightFlipper;
+    private GameObject leftFlipper;
     private PlayerInput playerInput_
     {
         get  
@@ -17,7 +20,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     // Start is called before the first frame update
     void Start()
     {
-        
+        flipperscript = FindObjectOfType<FlipperScript>();
     }
 
     // Update is called once per frame
@@ -35,14 +38,15 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
         playerInput_.Disable();       
     }
 
-    public void OnFlipperRight(InputAction.CallbackContext context)
+    public void OnFlipperRight(InputAction.CallbackContext context) //use Right Flipper
     {
         if (context.phase != InputActionPhase.Canceled)
         {
             print("flipper right");  
+            //flipperscript.flipper
         }            
     }
-    public void OnFlipperLeft(InputAction.CallbackContext context)
+    public void OnFlipperLeft(InputAction.CallbackContext context) //use Left Flipper
     {
         if (context.phase != InputActionPhase.Canceled)
         {
