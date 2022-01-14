@@ -10,18 +10,53 @@ public class BallLauncher : MonoBehaviour
     public float minPower = 0f;
     public float maxPower = 100f;
     public Slider powerSlider;
-    List<Rigidbody> ballList;
+    public List<Rigidbody> ballList;
+    public bool ballReady;
+    public bool launchCharging = false;
     // Start is called before the first frame update
     void Start()
     {
         powerSlider.minValue = 0f;
         powerSlider.maxValue = maxPower;
+        ballList = new List<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
-    {
-         powerSlider.value = launchPower; 
+    {   
+        if(ballReady)
+        {
+            powerSlider.gameObject.SetActive(true);
+        }
+        else 
+        {
+          powerSlider.gameObject.SetActive(false);  
+        }   
+         powerSlider.value = launchPower;
+         if(ballList.Count > 0)
+         {
+             ballReady = true;
+             
+             if(launchCharging)
+             {
+                 if(launchPower <= maxPower)
+                 {
+                     launchPower += 50 * Time.deltaTime;
+                 }
+             }
+             else
+             {
+                 foreach(Rigidbody rb in ballList)
+                 {
+                     rb.AddForce(launchPower * Vector3.forward);
+                 }
+             }
+         }
+         else
+         {
+             ballReady = false;
+             launchPower = 0f;
+         }
     }
      private void OnTriggerEnter(Collider col)
     {
@@ -35,5 +70,17 @@ public class BallLauncher : MonoBehaviour
     {
          ballList.Remove(col.gameObject.GetComponent<Rigidbody>());
          launchPower = 0f;
+    }
+
+    public void BallCharge()
+    {
+        launchCharging = true;
+        print("charging the launch");
+    }
+
+    public void BallRelease()
+    {
+        launchCharging = false;
+        print("releasing the launch");
     }
 }

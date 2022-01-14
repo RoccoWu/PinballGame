@@ -7,8 +7,10 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 {
     private PlayerInput playerInput;
     private FlipperScript flipperscript;
+    private BallLauncher balllauncherScript;
     public GameObject rightFlipper;
     public GameObject leftFlipper;
+    public GameObject ballLauncher;
 
     private PlayerInput playerInput_
     {
@@ -22,8 +24,10 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     void Start()
     {
         flipperscript = FindObjectOfType<FlipperScript>();
+        balllauncherScript = FindObjectOfType<BallLauncher>();
         rightFlipper = GameObject.FindGameObjectWithTag("rightFlipper");
-        leftFlipper = GameObject.FindGameObjectWithTag("leftFlipper");        
+        leftFlipper = GameObject.FindGameObjectWithTag("leftFlipper");      
+        ballLauncher = GameObject.FindGameObjectWithTag("balllauncher");  
     }
 
     // Update is called once per frame
@@ -71,8 +75,15 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     public void OnBallLauncher(InputAction.CallbackContext context)
     {
           if (context.phase != InputActionPhase.Canceled)
-        {
-            print("launch ball");  
+        {              
+            balllauncherScript.launchCharging = true;  
+            print("CHARGE BALL");        
         }  
+
+        else
+        {            
+            balllauncherScript.launchCharging = false;
+            print("RELEASE BALL");
+        }
     }   
 }
