@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5636557002659578733}
   - component: {fileID: 2267777632628141009}
   - component: {fileID: 2267777632628141008}
+  - component: {fileID: 5080135861635812012}
   m_Layer: 0
   m_Name: PinballFlipperRight
-  m_TagString: Untagged
+  m_TagString: rightFlipper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6141202121962054328}
-  m_LocalRotation: {x: -0, y: -0.3987491, z: -0, w: 0.91706014}
+  m_LocalRotation: {x: 0, y: -0.3987491, z: 0, w: 0.91706014}
   m_LocalPosition: {x: -0.442, y: -0.17347391, z: -0.263}
   m_LocalScale: {x: 19.77784, y: 38.121555, z: 19.77784}
   m_ConstrainProportionsScale: 0
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 6faa524f2562988468c0ec4809a2808e, type: 3}
+  - {fileID: 2100000, guid: c0c53838cd321b24c9859a44e656a693, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,10 +111,10 @@ HingeJoint:
   m_GameObject: {fileID: 6141202121962054328}
   m_ConnectedBody: {fileID: 0}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0.008, y: 0.00230528, z: 0}
+  m_Anchor: {x: 0.0099, y: 0.00230528, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.01653567, y: 0, z: -0.091800526}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -124,10 +125,10 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_Limits:
-    min: 0
-    max: 0
+    min: 4
+    max: 45
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -137,3 +138,19 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &5080135861635812012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141202121962054328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e7faab6c776e54eb381eb15e15fcc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restPosition: 0
+  pressedPosition: -45
+  hitForce: 1000
+  flipperDamper: 10

@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 {
     private PlayerInput playerInput;
     private FlipperScript flipperscript;
-    private GameObject rightFlipper;
-    private GameObject leftFlipper;
+    public GameObject rightFlipper;
+    public GameObject leftFlipper;
     private PlayerInput playerInput_
     {
         get  
@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     void Start()
     {
         flipperscript = FindObjectOfType<FlipperScript>();
+        rightFlipper = GameObject.FindGameObjectWithTag("rightFlipper");
+        leftFlipper = GameObject.FindGameObjectWithTag("leftFlipper");
     }
 
     // Update is called once per frame
@@ -41,17 +43,26 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     public void OnFlipperRight(InputAction.CallbackContext context) //use Right Flipper
     {
         if (context.phase != InputActionPhase.Canceled)
+        { 
+            flipperscript.FlipperPressed(rightFlipper);
+        }  
+
+        else
         {
-            print("flipper right");  
-            //flipperscript.flipper
-        }            
+            flipperscript.FlipperReleased(rightFlipper);
+        }         
     }
     public void OnFlipperLeft(InputAction.CallbackContext context) //use Left Flipper
     {
         if (context.phase != InputActionPhase.Canceled)
         {
-            print("flipper left");  
+            flipperscript.FlipperPressed(leftFlipper);
         }   
+
+        else
+        {
+            flipperscript.FlipperReleased(leftFlipper);
+        }
     }
 
     public void OnBallLauncher(InputAction.CallbackContext context)
@@ -59,6 +70,6 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
           if (context.phase != InputActionPhase.Canceled)
         {
             print("launch ball");  
-        }    
+        }  
     }
 }
