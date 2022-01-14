@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     {
         if (context.phase != InputActionPhase.Canceled)
         { 
+             flipperscript.hitForce = 1;
             flipperscript.FlipperPressed(rightFlipper);
         }  
 
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     {
         if (context.phase != InputActionPhase.Canceled)
         {
+            flipperscript.hitForce = -1;
             flipperscript.FlipperPressed(leftFlipper);
         }   
 
