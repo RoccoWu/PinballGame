@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     private FlipperScript flipperscript;
     public GameObject rightFlipper;
     public GameObject leftFlipper;
+
     private PlayerInput playerInput_
     {
         get  
@@ -22,13 +23,13 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     {
         flipperscript = FindObjectOfType<FlipperScript>();
         rightFlipper = GameObject.FindGameObjectWithTag("rightFlipper");
-        leftFlipper = GameObject.FindGameObjectWithTag("leftFlipper");
+        leftFlipper = GameObject.FindGameObjectWithTag("leftFlipper");        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
      private void OnEnable()
     {
@@ -73,5 +74,5 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
         {
             print("launch ball");  
         }  
-    }
+    }   
 }
