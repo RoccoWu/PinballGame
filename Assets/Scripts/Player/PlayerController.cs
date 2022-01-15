@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 {
     private PlayerInput playerInput;
-    private FlipperScript flipperscript;
+    private FlipperScript flipperscriptRight;
+    private FlipperScript flipeprscriptLeft;
     private BallLauncher balllauncherScript;
     public GameObject rightFlipper;
     public GameObject leftFlipper;
@@ -27,7 +28,6 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     // Start is called before the first frame update
     void Start()
     {
-        flipperscript = FindObjectOfType<FlipperScript>();
         balllauncherScript = FindObjectOfType<BallLauncher>();          
         ballLauncher = GameObject.FindGameObjectWithTag("balllauncher");  
     }
@@ -38,24 +38,24 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
         //right flipper
       if(flipperHeldRight)
       {
-          flipperscript.hitForce = 1;
-          flipperscript.FlipperPressed(rightFlipper);
+          flipperscriptRight.hitForce = 1;
+          flipperscriptRight.FlipperPressed(rightFlipper);
       }
       else
       {
-            flipperscript.FlipperReleased(rightFlipper);
+            flipperscriptRight.FlipperReleased(rightFlipper);
       }
 
     //left flipper
       if(flipperHeldLeft)
       {
-          flipperscript.hitForce = -1;
-          flipperscript.FlipperPressed(leftFlipper);
+          flipeprscriptLeft.hitForce = -1;
+          flipeprscriptLeft.FlipperPressed(leftFlipper);
       }
 
       else
       {
-          flipperscript.FlipperReleased(leftFlipper);
+          flipeprscriptLeft.FlipperReleased(leftFlipper);
       }
     }
      private void OnEnable()
