@@ -12,6 +12,8 @@ public class FlipperScript : MonoBehaviour
     HingeJoint hinge;
     public JointSpring spring;
 
+    public bool IsrightFlipper = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -40,17 +42,24 @@ public class FlipperScript : MonoBehaviour
       }*/
     }
 
-    public void FlipperPressed(GameObject flipper)
+    public void FlipperPressed(bool isPressingLeft)
     {
-       flipper.GetComponent<Rigidbody>().AddTorque(0, 50000000 * hitForce, 0);
-       //flipper.GetComponent<FlipperScript>().spring.targetPosition = pressedPosition;
-       print(flipper + "pressed");
+        if(isPressingLeft == IsrightFlipper)
+        {
+            return;
+        }
+       gameObject.GetComponent<Rigidbody>().AddTorque(0, 50000000 * hitForce, 0);
+       //flipper.GetComponent<FlipperScript>().spring.targetPosition = pressedPosition;      
     }
 
-    public void FlipperReleased(GameObject flipper)
+    public void FlipperReleased(bool isPressingLeft)
     {
-        flipper.GetComponent<FlipperScript>().spring.targetPosition = restPosition;
-        flipper.GetComponent<Rigidbody>().angularVelocity = new Vector3(0,0,0);
-        print(flipper + "released");
+        if(isPressingLeft == IsrightFlipper)
+        {
+            return;
+        }
+        gameObject.GetComponent<FlipperScript>().spring.targetPosition = restPosition;
+        gameObject.GetComponent<Rigidbody>().angularVelocity = new Vector3(0,0,0);
+        //print(flipper + "released");
     }
 }
