@@ -7,8 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 {
     private PlayerInput playerInput;
-    public FlipperScript flipperscriptRight;
-    public FlipperScript flipperScriptLeft;
+    private FlipperScript flipperscript;
     private BallLauncher balllauncherScript;
     public GameObject rightFlipper;
     public GameObject leftFlipper;
@@ -28,6 +27,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     // Start is called before the first frame update
     void Start()
     {
+        flipperscript = FindObjectOfType<FlipperScript>();
         balllauncherScript = FindObjectOfType<BallLauncher>();          
         ballLauncher = GameObject.FindGameObjectWithTag("balllauncher");  
     }
@@ -35,48 +35,27 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     // Update is called once per frame
     void Update()
     {
-        if(playerInput_.Player.FlipperRight.triggered)
-        {
-            flipperscriptRight.FlipperPressed(rightFlipper);
-        }
-
-        else
-        {
-            flipperscriptRight.FlipperReleased(rightFlipper);
-        }
-
-         if(playerInput_.Player.FlipperLeft.triggered)
-        {
-            flipperscriptRight.FlipperPressed(leftFlipper);
-        }
-
-        else
-        {
-            flipperscriptRight.FlipperReleased(leftFlipper);
-        }
-
-
         //right flipper
       if(flipperHeldRight)
       {
-          flipperscriptRight.hitForce = 1;
-          flipperscriptRight.FlipperPressed(rightFlipper);
+          flipperscript.hitForce = 1;
+          flipperscript.FlipperPressed(rightFlipper);
       }
       else
       {
-            flipperscriptRight.FlipperReleased(rightFlipper);
+            flipperscript.FlipperReleased(rightFlipper);
       }
 
     //left flipper
       if(flipperHeldLeft)
       {
-          flipperScriptLeft.hitForce = -1;
-          flipperScriptLeft.FlipperPressed(leftFlipper);
+          flipperscript.hitForce = -1;
+          flipperscript.FlipperPressed(leftFlipper);
       }
 
       else
       {
-          flipperScriptLeft.FlipperReleased(leftFlipper);
+          flipperscript.FlipperReleased(leftFlipper);
       }
     }
      private void OnEnable()
@@ -91,27 +70,28 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 
     public void OnFlipperRight(InputAction.CallbackContext context) //use Right Flipper need to hold
     {
-        /*if (context.performed)
+        if (context.performed)
         { 
-            flipperscriptRight.FlipperPressed(rightFlipper);
+            flipperHeldRight = true;
         }  
 
         else if(context.canceled)
         {
-            flipperscriptRight.FlipperReleased(rightFlipper);
-        }   */      
+            flipperHeldRight = false;
+        }         
     }
     public void OnFlipperLeft(InputAction.CallbackContext context) //use Left Flipper need to hold
     {
-       /* if (context.performed)
+        if (context.performed)
         {
-            flipperScriptLeft.FlipperPressed(leftFlipper);           
+            flipperHeldLeft = true;
+           
         }   
 
         else if(context.canceled)
         {
-            flipperScriptLeft.FlipperReleased(leftFlipper);
-        }*/
+            flipperHeldLeft= false;
+        }
     }
 
     public void OnBallLauncher(InputAction.CallbackContext context)
@@ -128,24 +108,4 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
             print("RELEASE BALL");
         }
     }   
-
-    private void FlipRight()
-    {
-        flipperHeldRight = true;
-    }
-
-    private void FlipRightReleased()
-    {
-        flipperHeldRight = false;
-    }
-
-    private void FlipLeft()
-    {
-        flipperHeldLeft = true;
-    }
-
-    private void FlipLeftReleased()
-    {
-        flipperHeldLeft = false;
-    }
 }
