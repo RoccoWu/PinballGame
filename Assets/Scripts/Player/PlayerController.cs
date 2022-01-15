@@ -7,8 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 {
     private PlayerInput playerInput;
-    public FlipperScript flipperscriptRight;
-    public FlipperScript flipperscriptLeft;
+    private FlipperScript flipperscript;
     private BallLauncher balllauncherScript;
     public GameObject rightFlipper;
     public GameObject leftFlipper;
@@ -28,6 +27,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     // Start is called before the first frame update
     void Start()
     {
+        flipperscript = FindObjectOfType<FlipperScript>();
         balllauncherScript = FindObjectOfType<BallLauncher>();          
         ballLauncher = GameObject.FindGameObjectWithTag("balllauncher");  
     }
@@ -38,27 +38,25 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
         //right flipper
       if(flipperHeldRight)
       {
-          flipperscriptRight.hitForce = 1;
-          flipperscriptRight.FlipperPressed(false);
+          flipperscript.hitForce = 1;
+          flipperscript.FlipperPressed(rightFlipper);
       }
       else
       {
-            flipperscriptRight.FlipperReleased(true);
+            flipperscript.FlipperReleased(rightFlipper);
       }
 
-        //left flipper
+    //left flipper
       if(flipperHeldLeft)
       {
-          flipperscriptLeft.hitForce = -1;
-          flipperscriptLeft.FlipperPressed(true);
+          flipperscript.hitForce = -1;
+          flipperscript.FlipperPressed(leftFlipper);
       }
 
       else
       {
-          flipperscriptLeft.FlipperReleased(false);
+          flipperscript.FlipperReleased(leftFlipper);
       }
-      print(flipperscriptRight);
-
     }
      private void OnEnable()
     {
@@ -86,7 +84,8 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     {
         if (context.performed)
         {
-            flipperHeldLeft = true;           
+            flipperHeldLeft = true;
+           
         }   
 
         else if(context.canceled)
