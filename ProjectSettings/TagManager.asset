@@ -9,6 +9,7 @@ TagManager:
   - roccosballscatcher
   - ball
   - balllauncher
+  - BallSpawn
   layers:
   - Default
   - TransparentFX
