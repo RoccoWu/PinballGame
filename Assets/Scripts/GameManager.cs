@@ -9,7 +9,11 @@ public class GameManager : MonoBehaviour
     public GameObject startMenu;
     public Button startButton;
     public Button tutorialButton;
-    public Button quitButton;    
+    public Button quitButton;   
+
+    [Header("Game Over")]
+    public GameObject gameOverscreen; 
+    public Button returntoMenu;
 
     [Header("Core Game Loop")]
     public bool gameStart = false;
@@ -21,7 +25,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        startMenu.GetComponent<CanvasGroup>().alpha = 1;
+        gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
     }
 
     // Update is called once per frame
@@ -45,6 +50,7 @@ public class GameManager : MonoBehaviour
             }
     }
 
+//Menu Stuff
     public void StartGame()
     {
         gameStart = true;
@@ -60,4 +66,13 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    // GameOver
+
+    public void ReturntoMenu()
+    {
+        gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
+        startMenu.GetComponent<CanvasGroup>().alpha = 0; 
+    }
+
 }
