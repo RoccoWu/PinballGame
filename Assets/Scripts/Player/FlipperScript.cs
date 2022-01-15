@@ -28,13 +28,21 @@ public class FlipperScript : MonoBehaviour
         spring.damper = flipperDamper;
         hinge.spring = spring;
         hinge.useLimits = true;
+        
+      /*if(Input.GetKey(KeyCode.R))
+      {
+        GetComponent<Rigidbody>().AddTorque(0, 50000000 * hitForce, 0);  
+      }
+
+      else
+      {
+        GetComponent<FlipperScript>().spring.targetPosition = restPosition;
+      }*/
     }
 
     public void FlipperPressed(GameObject flipper)
     {
        flipper.GetComponent<Rigidbody>().AddTorque(0, 50000000 * hitForce, 0);
-
- 
        //flipper.GetComponent<FlipperScript>().spring.targetPosition = pressedPosition;
        print(flipper + "pressed");
     }

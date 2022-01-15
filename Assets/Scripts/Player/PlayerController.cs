@@ -45,11 +45,11 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
         playerInput_.Disable();       
     }
 
-    public void OnFlipperRight(InputAction.CallbackContext context) //use Right Flipper
+    public void OnFlipperRight(InputAction.CallbackContext context) //use Right Flipper need to hold
     {
         if (context.phase != InputActionPhase.Canceled)
         { 
-             flipperscript.hitForce = 1;
+            flipperscript.hitForce = 1;
             flipperscript.FlipperPressed(rightFlipper);
         }  
 
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
             flipperscript.FlipperReleased(rightFlipper);
         }         
     }
-    public void OnFlipperLeft(InputAction.CallbackContext context) //use Left Flipper
+    public void OnFlipperLeft(InputAction.CallbackContext context) //use Left Flipper need to hold
     {
         if (context.phase != InputActionPhase.Canceled)
         {
