@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 {
+    private GameManager gameManager;
     private PlayerInput playerInput;
     public FlipperScript flipperscriptRight;
     public FlipperScript flipeprscriptLeft;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     {
         balllauncherScript = FindObjectOfType<BallLauncher>();          
         ballLauncher = GameObject.FindGameObjectWithTag("balllauncher");  
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -70,42 +72,52 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 
     public void OnFlipperRight(InputAction.CallbackContext context) //use Right Flipper need to hold
     {
-        if (context.performed)
-        { 
-            flipperHeldRight = true;
-        }  
-
-        else if(context.canceled)
+        if(gameManager.gameStart)
         {
-            flipperHeldRight = false;
-        }         
+             if (context.performed)
+            { 
+             flipperHeldRight = true;
+            }  
+
+            else if(context.canceled)
+            {
+             flipperHeldRight = false;
+         }         
+        }
+       
     }
     public void OnFlipperLeft(InputAction.CallbackContext context) //use Left Flipper need to hold
     {
-        if (context.performed)
+        if(gameManager.gameStart)
         {
-            flipperHeldLeft = true;
+            if (context.performed)
+            {
+              flipperHeldLeft = true;
            
-        }   
+            }   
 
         else if(context.canceled)
-        {
-            flipperHeldLeft= false;
+         {
+                flipperHeldLeft= false;
+         }
         }
     }
 
     public void OnBallLauncher(InputAction.CallbackContext context)
     {
+        if(gameManager.gameStart)
+        {
           if (context.phase != InputActionPhase.Canceled)
-        {              
-            balllauncherScript.launchCharging = true;  
-            print("CHARGE BALL");        
-        }  
+            {              
+              balllauncherScript.launchCharging = true;  
+             print("CHARGE BALL");        
+          }  
 
-        else
-        {            
-            balllauncherScript.launchCharging = false;
-            print("RELEASE BALL");
+            else
+         {            
+              balllauncherScript.launchCharging = false;
+              print("RELEASE BALL");
+            }
         }
     }   
 }
