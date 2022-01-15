@@ -1075,6 +1075,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6f325c59a3c1740b576e514b2144a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipperscriptRight: {fileID: 5080135861635812017}
+  flipeprscriptLeft: {fileID: 1732873545}
   rightFlipper: {fileID: 919132147485934531}
   leftFlipper: {fileID: 1732873543}
   ballLauncher: {fileID: 1706080773}
@@ -5908,6 +5910,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5076798556035486163, guid: 6faa524f2562988468c0ec4809a2808e, type: 3}
+--- !u!114 &1732873545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5080135861635812012, guid: 47a87f39beda47346b9389aec69f6a90,
+    type: 3}
+  m_PrefabInstance: {fileID: 1732873541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732873543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e7faab6c776e54eb381eb15e15fcc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1813414384
 GameObject:
   m_ObjectHideFlags: 3
@@ -6162,6 +6176,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5076798556035486163, guid: 6faa524f2562988468c0ec4809a2808e, type: 3}
+--- !u!114 &5080135861635812017 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5080135861635812012, guid: 47a87f39beda47346b9389aec69f6a90,
+    type: 3}
+  m_PrefabInstance: {fileID: 6483080215209107835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147485934531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e7faab6c776e54eb381eb15e15fcc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5471430549770789814
 PrefabInstance:
   m_ObjectHideFlags: 0

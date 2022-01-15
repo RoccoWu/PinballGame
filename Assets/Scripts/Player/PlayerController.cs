@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 {
     private PlayerInput playerInput;
-    private FlipperScript flipperscriptRight;
-    private FlipperScript flipeprscriptLeft;
+    public FlipperScript flipperscriptRight;
+    public FlipperScript flipeprscriptLeft;
     private BallLauncher balllauncherScript;
     public GameObject rightFlipper;
     public GameObject leftFlipper;
