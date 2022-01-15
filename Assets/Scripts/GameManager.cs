@@ -7,8 +7,10 @@ public class GameManager : MonoBehaviour
 {
     [Header("Main Menu")]
     public GameObject startMenu;
+    public GameObject tutorial;
     public Button startButton;
     public Button tutorialButton;
+    public Button closetutorialButton;
     public Button quitButton;   
 
     [Header("Game Over")]
@@ -26,8 +28,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
+        tutorial.GetComponent<CanvasGroup>().alpha = 0;
+       //tutorial.GetComponent<CanvasGroup>().interactable = false;
+        tutorial.GetComponent<CanvasGroup>().blocksRaycasts = false;
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
-        gameOverscreen.GetComponent<CanvasGroup>().interactable = false;
+        //gameOverscreen.GetComponent<CanvasGroup>().interactable = false;
+        gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     // Update is called once per frame
@@ -61,7 +67,18 @@ public class GameManager : MonoBehaviour
 
     public void Tutorial()
     {
+        startMenu.GetComponent<CanvasGroup>().alpha = 0;
+        startMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        tutorial.GetComponent<CanvasGroup>().alpha = 1;
+        tutorial.GetComponent<CanvasGroup>().blocksRaycasts = true;
+    }
 
+    public void CloseTutorial()
+    {
+        tutorial.GetComponent<CanvasGroup>().alpha = 0;
+        tutorial.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        startMenu.GetComponent<CanvasGroup>().alpha = 1;
+        startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
     public void QuitGame()
@@ -74,9 +91,9 @@ public class GameManager : MonoBehaviour
     public void ReturntoMenu()
     {
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
-        gameOverscreen.GetComponent<CanvasGroup>().interactable = false;
+        gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 0; 
-        startMenu.GetComponent<CanvasGroup>().interactable = true; 
+        startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true; 
     }
 
 }
