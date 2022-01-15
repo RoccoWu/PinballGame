@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     public GameObject rightFlipper;
     public GameObject leftFlipper;
     public GameObject ballLauncher;
+    public Action OnHoldFlipper;
+    public bool flipperHeldRight = false;
+    public bool flipperHeldLeft = false;
 
     private PlayerInput playerInput_
     {
@@ -24,16 +28,35 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     void Start()
     {
         flipperscript = FindObjectOfType<FlipperScript>();
-        balllauncherScript = FindObjectOfType<BallLauncher>();
-        rightFlipper = GameObject.FindGameObjectWithTag("rightFlipper");
-        leftFlipper = GameObject.FindGameObjectWithTag("leftFlipper");      
+        balllauncherScript = FindObjectOfType<BallLauncher>();          
         ballLauncher = GameObject.FindGameObjectWithTag("balllauncher");  
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+        //right flipper
+      if(flipperHeldRight)
+      {
+          flipperscript.hitForce = 1;
+          flipperscript.FlipperPressed(rightFlipper);
+      }
+      else
+      {
+            flipperscript.FlipperReleased(rightFlipper);
+      }
+
+    //left flipper
+      if(flipperHeldLeft)
+      {
+          flipperscript.hitForce = -1;
+          flipperscript.FlipperPressed(leftFlipper);
+      }
+
+      else
+      {
+          flipperscript.FlipperReleased(leftFlipper);
+      }
     }
      private void OnEnable()
     {
@@ -47,28 +70,27 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 
     public void OnFlipperRight(InputAction.CallbackContext context) //use Right Flipper need to hold
     {
-        if (context.phase != InputActionPhase.Canceled)
+        if (context.performed)
         { 
-            flipperscript.hitForce = 1;
-            flipperscript.FlipperPressed(rightFlipper);
+            flipperHeldRight = true;
         }  
 
-        else
+        else if(context.canceled)
         {
-            flipperscript.FlipperReleased(rightFlipper);
+            flipperHeldRight = false;
         }         
     }
     public void OnFlipperLeft(InputAction.CallbackContext context) //use Left Flipper need to hold
     {
-        if (context.phase != InputActionPhase.Canceled)
+        if (context.performed)
         {
-            flipperscript.hitForce = -1;
-            flipperscript.FlipperPressed(leftFlipper);
+            flipperHeldLeft = true;
+           
         }   
 
-        else
+        else if(context.canceled)
         {
-            flipperscript.FlipperReleased(leftFlipper);
+            flipperHeldLeft= false;
         }
     }
 

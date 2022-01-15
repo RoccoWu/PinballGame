@@ -1075,9 +1075,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6f325c59a3c1740b576e514b2144a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightFlipper: {fileID: 0}
-  leftFlipper: {fileID: 0}
-  ballLauncher: {fileID: 0}
+  rightFlipper: {fileID: 919132147485934531}
+  leftFlipper: {fileID: 1732873543}
+  ballLauncher: {fileID: 1706080773}
+  flipperHeldRight: 0
+  flipperHeldLeft: 0
 --- !u!43 &406647498
 Mesh:
   m_ObjectHideFlags: 0

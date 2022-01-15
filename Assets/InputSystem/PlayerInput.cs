@@ -33,7 +33,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""id"": ""27ca2e61-64f4-48c4-8eb9-c070d837edd3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -42,7 +42,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""id"": ""bbf5efb7-0b57-4930-898f-e51a5a86f12d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {

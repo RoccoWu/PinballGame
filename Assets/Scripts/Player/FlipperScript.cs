@@ -50,6 +50,7 @@ public class FlipperScript : MonoBehaviour
     public void FlipperReleased(GameObject flipper)
     {
         flipper.GetComponent<FlipperScript>().spring.targetPosition = restPosition;
-        //print(flipper + "released");
+        flipper.GetComponent<Rigidbody>().angularVelocity = new Vector3(0,0,0);
+        print(flipper + "released");
     }
 }
