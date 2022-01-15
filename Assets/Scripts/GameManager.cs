@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Main Menu")]
     public GameObject startMenu;
+    public GameObject tutorial;
     public Button startButton;
     public Button tutorialButton;
     public Button quitButton;   
@@ -25,8 +26,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startMenu.GetComponent<CanvasGroup>().alpha = 1;
-        gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
+        //startMenu.GetComponent<CanvasGroup>().alpha = 1;
+        //gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
     }
 
     // Update is called once per frame
@@ -59,7 +60,8 @@ public class GameManager : MonoBehaviour
 
     public void Tutorial()
     {
-
+        startMenu.GetComponent<CanvasGroup>().alpha = 0; 
+        tutorial.GetComponent<CanvasGroup>().alpha = 1;
     }
 
     public void QuitGame()

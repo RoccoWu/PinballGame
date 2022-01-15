@@ -29,7 +29,7 @@ public class FlipperScript : MonoBehaviour
         hinge.spring = spring;
         hinge.useLimits = true;
         
-      /*if(Input.GetKey(KeyCode.R))
+      if(Input.GetKey(KeyCode.R))
       {
         GetComponent<Rigidbody>().AddTorque(0, 50000000 * hitForce, 0);  
       }
@@ -37,20 +37,20 @@ public class FlipperScript : MonoBehaviour
       else
       {
         GetComponent<FlipperScript>().spring.targetPosition = restPosition;
-      }*/
+      }
     }
 
     public void FlipperPressed(GameObject flipper)
     {
        flipper.GetComponent<Rigidbody>().AddTorque(0, 50000000 * hitForce, 0);
        //flipper.GetComponent<FlipperScript>().spring.targetPosition = pressedPosition;
-       print(flipper + "pressed");
+       //print(flipper + "pressed");
     }
 
     public void FlipperReleased(GameObject flipper)
     {
         flipper.GetComponent<FlipperScript>().spring.targetPosition = restPosition;
         flipper.GetComponent<Rigidbody>().angularVelocity = new Vector3(0,0,0);
-        print(flipper + "released");
+       //print(flipper + "released");
     }
 }
