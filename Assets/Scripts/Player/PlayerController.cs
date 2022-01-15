@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
       }
       else
       {
+            flipperscriptRight.hitForce = 0;
             flipperscriptRight.FlipperReleased(rightFlipper);
       }
 
@@ -57,6 +58,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 
       else
       {
+          flipeprscriptLeft.hitForce = 0;
           flipeprscriptLeft.FlipperReleased(leftFlipper);
       }
     }

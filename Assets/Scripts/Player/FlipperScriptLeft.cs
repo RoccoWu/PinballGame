@@ -1,17 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class FlipperScript : MonoBehaviour
+public class FlipperScriptLeft : MonoBehaviour
 {
-    public float restPosition = 0f;
+     public float restPosition = 0f;
     public float pressedPosition;
     public float hitForce;
     public float flipperDamper = 150f;
     HingeJoint hinge;
     public JointSpring spring;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,17 +25,7 @@ public class FlipperScript : MonoBehaviour
         spring.spring = hitForce;
         spring.damper = flipperDamper;
         hinge.spring = spring;
-        hinge.useLimits = true;
-        
-      /*if(Input.GetKey(KeyCode.R))
-      {
-        GetComponent<Rigidbody>().AddTorque(0, 50000000 * hitForce, 0);  
-      }
-
-      else
-      {
-        GetComponent<FlipperScript>().spring.targetPosition = restPosition;
-      }*/
+        hinge.useLimits = true;  
     }
 
     public void FlipperPressed(GameObject flipper)
