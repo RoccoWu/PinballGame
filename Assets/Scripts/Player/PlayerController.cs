@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
 {
     private PlayerInput playerInput;
-    private FlipperScript flipperscriptRight;
-    private FlipperScript flipeprscriptLeft;
+    public FlipperScript flipperscriptRight;
+    public FlipperScript flipeprscriptLeft;
     private BallLauncher balllauncherScript;
     public GameObject rightFlipper;
     public GameObject leftFlipper;
@@ -35,7 +35,27 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     // Update is called once per frame
     void Update()
     {
-        //right flipper
+        if(Input.GetKey(KeyCode.E))
+        {
+           rightFlipper.GetComponent<Rigidbody>().AddTorque(0, 50000000 * flipperscriptRight.hitForce, 0);  
+        }
+
+        else
+        {
+          rightFlipper.GetComponent<FlipperScript>().spring.targetPosition = flipperscriptRight.restPosition;
+        }
+    
+        if(Input.GetKey(KeyCode.Q))
+        {
+          leftFlipper.GetComponent<Rigidbody>().AddTorque(0, 50000000 * flipeprscriptLeft.hitForce, 0);  
+        }
+
+        else
+        {
+          leftFlipper.GetComponent<FlipperScript>().spring.targetPosition = flipeprscriptLeft.restPosition;
+        }
+
+      /*  //right flipper
       if(flipperHeldRight)
       {
           flipperscriptRight.hitForce = 1;
@@ -56,7 +76,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
       else
       {
           flipeprscriptLeft.FlipperReleased(leftFlipper);
-      }
+      }*/
     }
      private void OnEnable()
     {
@@ -69,7 +89,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
     }
 
     public void OnFlipperRight(InputAction.CallbackContext context) //use Right Flipper need to hold
-    {
+    {/*
         if (context.performed)
         { 
             flipperHeldRight = true;
@@ -78,11 +98,11 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
         else if(context.canceled)
         {
             flipperHeldRight = false;
-        }         
+        }     */    
     }
     public void OnFlipperLeft(InputAction.CallbackContext context) //use Left Flipper need to hold
     {
-        if (context.performed)
+        /*if (context.performed)
         {
             flipperHeldLeft = true;
            
@@ -91,7 +111,7 @@ public class PlayerController : MonoBehaviour, PlayerInput.IPlayerActions
         else if(context.canceled)
         {
             flipperHeldLeft= false;
-        }
+        }*/
     }
 
     public void OnBallLauncher(InputAction.CallbackContext context)
