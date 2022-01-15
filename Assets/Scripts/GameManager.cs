@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
+        gameOverscreen.GetComponent<CanvasGroup>().interactable = false;
     }
 
     // Update is called once per frame
@@ -54,7 +55,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameStart = true;
-        startMenu.GetComponent<CanvasGroup>().alpha = 0;               
+        startMenu.GetComponent<CanvasGroup>().alpha = 0;    
+        startMenu.GetComponent<CanvasGroup>().interactable = false;            
     }
 
     public void Tutorial()
@@ -72,7 +74,9 @@ public class GameManager : MonoBehaviour
     public void ReturntoMenu()
     {
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
+        gameOverscreen.GetComponent<CanvasGroup>().interactable = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 0; 
+        startMenu.GetComponent<CanvasGroup>().interactable = true; 
     }
 
 }
