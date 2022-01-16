@@ -64,6 +64,7 @@ public class FlipperScript : MonoBehaviour
       {
         gameManager.score += 50;
         activeFlipper = false;
+        print("SHEEESH");
       }
     }
 }

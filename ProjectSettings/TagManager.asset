@@ -10,6 +10,7 @@ TagManager:
   - ball
   - balllauncher
   - BallSpawn
+  - lunchlady
   layers:
   - Default
   - TransparentFX
