@@ -22,15 +22,25 @@ public class BallDestroyer : MonoBehaviour
     {
         if(col.gameObject.CompareTag("ball"))
         {
+            gameManager.ballRespawntimer = 2f;
+            print(gameManager.ballRespawntimer);
             gameManager.lives--;
             if(gameManager.lives == 0f)
             {
                 gameManager.gameOver = true;
+                 gameManager.GameOver();
             }
             else
             {
-                StartCoroutine(gameManager.ballRespawnTimer(2));
+                RespawnBall();
+                print("starting timer");
             }
         }
+    }
+
+    private void RespawnBall()
+    {
+        StartCoroutine(gameManager.ballRespawnTimer());
+        gameManager.ballRespawntimer = 2f;
     }
 }

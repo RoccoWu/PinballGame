@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchPower: 0
+  powerMultiplier: 0
   minPower: 0
   maxPower: 100
   powerSlider: {fileID: 0}
