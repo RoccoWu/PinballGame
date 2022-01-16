@@ -9293,6 +9293,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2408129279609695835, guid: 4bef845d2f561e64aa0e79ddeb4c3507,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2408129279609695838, guid: 4bef845d2f561e64aa0e79ddeb4c3507,
         type: 3}
       propertyPath: m_Name
@@ -9325,7 +9330,7 @@ HingeJoint:
   m_Anchor: {x: 0.0104, y: -0.00219, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -1.0588379, y: -0.31339622, z: -0.12108587}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -9394,7 +9399,7 @@ MonoBehaviour:
   restPosition: 0
   pressedPosition: -45
   hitForce: 0
-  flipperDamper: 10
+  flipperDamper: 1
 --- !u!33 &3469287838077802204
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9564,7 +9569,7 @@ PrefabInstance:
     - target: {fileID: 7072935913273430727, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
       propertyPath: maxPower
-      value: 400
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 7072935913273430727, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
@@ -9574,7 +9579,7 @@ PrefabInstance:
     - target: {fileID: 7072935913273430727, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
       propertyPath: powerMultiplier
-      value: 220
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7072935913592028099, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
