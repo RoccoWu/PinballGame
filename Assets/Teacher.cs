@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nerd : MonoBehaviour
+public class Teacher : MonoBehaviour
 {
     public GameManager gameManager;
     // Start is called before the first frame update
@@ -17,11 +17,12 @@ public class Nerd : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision col)
+     private void OnCollisionEnter(Collision col)
     {
         if(col.gameObject.CompareTag("ball"))
         {
-            gameManager.score += 300;
+            gameManager.score -= 100;
+            //play audio
         }
     }
 }
