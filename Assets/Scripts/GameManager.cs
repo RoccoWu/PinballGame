@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
     public GameObject ball;
     public GameObject ballRespawn;
+    public float ballBounciness;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +50,10 @@ public class GameManager : MonoBehaviour
     {
         scoreCounter.text = "Score: " + score.ToString();
         ballCounter.text = "Balls Left: " + lives.ToString();
+        if(gameOver)
+        {
+            score = 0;
+        }
     }
 
     public void GameOver()
@@ -70,6 +75,7 @@ public class GameManager : MonoBehaviour
             }
             ballRespawntimer = 0;
             ball.transform.position = ballRespawn.transform.position;
+            ball.GetComponent<SphereCollider>().material.bounciness = ballBounciness;
             print("respawn");
     }
 
@@ -108,6 +114,9 @@ public class GameManager : MonoBehaviour
         GameUI.GetComponent<CanvasGroup>().alpha = 1;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
         gameOver = false;
+        lives = 3;
+        score = 0;
+        ball.transform.position = ballRespawn.transform.position;
     }
 
     public void QuitGame()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallDestroyer : MonoBehaviour
 {
     public GameManager gameManager;
+    public GameObject ball;
    // public GameObject respawnPoint;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class BallDestroyer : MonoBehaviour
     {
         if(col.gameObject.CompareTag("ball"))
         {
+            ball.GetComponent<SphereCollider>().material.bounciness = 0f;
             gameManager.ballRespawntimer = 2f;
             print(gameManager.ballRespawntimer);
             gameManager.lives--;
