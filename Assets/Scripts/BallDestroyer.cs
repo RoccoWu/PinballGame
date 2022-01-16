@@ -18,19 +18,29 @@ public class BallDestroyer : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider col)
+    public void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.CompareTag("ball"))
         {
+            gameManager.ballResapwntimer = 2f;
+            print(gameManager.ballResapwntimer);
             gameManager.lives--;
             if(gameManager.lives == 0f)
             {
                 gameManager.gameOver = true;
+                gameManager.GameOver();
             }
             else
             {
-                StartCoroutine(gameManager.ballRespawnTimer(2));
+                RespawnBall();
+                print("starting timer");
             }
         }
+    }
+
+    private void RespawnBall()
+    {
+        StartCoroutine(gameManager.ballRespawnTimer());
+        gameManager.ballResapwntimer = 2f;
     }
 }

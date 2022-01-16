@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7072935913592028108}
   - component: {fileID: 7072935913592028096}
   m_Layer: 0
-  m_Name: BallLauncher
+  m_Name: BallPlunger
   m_TagString: balllauncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
