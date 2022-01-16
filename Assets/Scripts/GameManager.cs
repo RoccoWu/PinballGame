@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreCounter.text = "Score: " + score.ToString();
+        scoreCounter.text = "Sheesh Points: " + score.ToString();
         ballCounter.text = "Balls Left: " + lives.ToString();
         if(gameOver)
         {
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = true;
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 1;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = true;
-        gameOverscore.text = "Score: " + score.ToString();
+        gameOverscore.text = "Sheesh Points: " + score.ToString();
     }
 
         public IEnumerator ballRespawnTimer()
