@@ -7,7 +7,6 @@ public class BallLauncher : MonoBehaviour
 {
     [Header("Launcher")]
     public float launchPower;
-    public float powerMultiplier;
     public float minPower = 0f;
     public float maxPower = 100f;
     public Slider powerSlider;
@@ -42,7 +41,7 @@ public class BallLauncher : MonoBehaviour
              {
                  if(launchPower <= maxPower)
                  {
-                     launchPower += powerMultiplier * Time.deltaTime;
+                     launchPower += 50 * Time.deltaTime;
                  }
              }
              else
