@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8359111681953152717
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 1
+  temperature:
+    m_OverrideState: 1
+    m_Value: -5
+  tint:
+    m_OverrideState: 1
+    m_Value: 35
 --- !u!114 &-8099631173307936873
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -15,10 +34,10 @@ MonoBehaviour:
   active: 1
   type:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 8
   intensity:
     m_OverrideState: 1
-    m_Value: 0.508
+    m_Value: 0.71
   response:
     m_OverrideState: 1
     m_Value: 0.803
@@ -111,6 +130,7 @@ MonoBehaviour:
   - {fileID: -7011558710299706105}
   - {fileID: -8099631173307936873}
   - {fileID: 3598823280153572509}
+  - {fileID: -8359111681953152717}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -142,7 +162,7 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.9079562, y: 0.96093756, z: 1, w: 0}
+    m_Value: {x: 0.82547647, y: 0.9886542, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.9135718, z: 0.93654066, w: 0}
