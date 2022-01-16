@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Button startButton;
     public Button tutorialButton;
     public Button closetutorialButton;
+    public Button creditButton;
+    public Button closecreditButton;
     public Button quitButton;   
 
     [Header("Game Over")]
@@ -106,6 +108,16 @@ public class GameManager : MonoBehaviour
         tutorial.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true;
+    }
+
+    public void Credits()
+    {
+
+    }
+
+    public void CloseCredits()
+    {
+        
     }
     public void ReplayGame()
     {
