@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("Main Menu")]
     public GameObject startMenu;
     public GameObject tutorial;
+    public GameObject credits;
     public Button startButton;
     public Button tutorialButton;
     public Button closetutorialButton;
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
         tutorial.GetComponent<CanvasGroup>().alpha = 0;
+        credits.GetComponent<CanvasGroup>().alpha = 0;
+        credits.GetComponent<CanvasGroup>().blocksRaycasts = false;
        //tutorial.GetComponent<CanvasGroup>().interactable = false;
         tutorial.GetComponent<CanvasGroup>().blocksRaycasts = false;
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
@@ -104,6 +107,8 @@ public class GameManager : MonoBehaviour
 
     public void CloseTutorial()
     {
+        startMenu.GetComponent<CanvasGroup>().alpha = 0;
+        startMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
         tutorial.GetComponent<CanvasGroup>().alpha = 0;
         tutorial.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
@@ -112,12 +117,18 @@ public class GameManager : MonoBehaviour
 
     public void Credits()
     {
-
+        startMenu.GetComponent<CanvasGroup>().alpha = 0;
+        startMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        credits.GetComponent<CanvasGroup>().alpha = 1;
+        credits.GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
     public void CloseCredits()
     {
-        
+        credits.GetComponent<CanvasGroup>().alpha = 0;
+        credits.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        startMenu.GetComponent<CanvasGroup>().alpha = 1;
+        startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
     public void ReplayGame()
     {
