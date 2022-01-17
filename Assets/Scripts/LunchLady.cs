@@ -23,7 +23,7 @@ public class LunchLady : MonoBehaviour
     {
         if(col.gameObject.CompareTag("ball"))
         {
-            gameManager.score += 500;
+            gameManager.score += 1000;
             audioSource.PlayOneShot(hitAudio, 0.69f);
         }
     }

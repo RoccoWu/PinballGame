@@ -13,6 +13,8 @@ public class FlipperScript : MonoBehaviour
     HingeJoint hinge;
     public JointSpring spring;
     public bool activeFlipper = false;
+    public AudioSource audioSource;
+    public AudioClip flipperSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,7 @@ public class FlipperScript : MonoBehaviour
         hinge = GetComponent<HingeJoint>();
         hinge.useSpring = true;
         GetComponent<Rigidbody>().maxAngularVelocity = 99;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,7 @@ public class FlipperScript : MonoBehaviour
     {
        flipper.GetComponent<Rigidbody>().AddTorque(0, 50000000 * hitForce, 0);
        activeFlipper = true;
+       audioSource.PlayOneShot(flipperSFX, .35f);
        //flipper.GetComponent<FlipperScript>().spring.targetPosition = pressedPosition;
        //print(flipper + "pressed");
     }

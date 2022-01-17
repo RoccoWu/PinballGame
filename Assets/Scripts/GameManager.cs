@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [Header("Core Game Loop")]
     public bool gameStart = false;
     public float ballRespawntimer;
+    public AudioClip ballRespawnSFX;
     public PlayerController playerController;
     public GameObject GameUI;
     public TextMeshProUGUI ballCounter, scoreCounter;
@@ -94,9 +95,10 @@ public class GameManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(ballRespawntimer); 
                 ballRespawntimer--;
-            }
+            }            
             ballRespawntimer = 0;
             ball.transform.position = ballRespawn.transform.position;
+            audioSource.PlayOneShot(ballRespawnSFX, 1f);
             ball.GetComponent<SphereCollider>().material.bounciness = ballBounciness;
             print("respawn");
     }
