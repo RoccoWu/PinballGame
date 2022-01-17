@@ -10,7 +10,7 @@ public class GigaChad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class GigaChad : MonoBehaviour
     {
         if(col.gameObject.CompareTag("ball"))
         {
-            gameManager.score += 690;
+            gameManager.score += 500;
             audioSource.PlayOneShot(hitAudio, 0.69f);
         }
     }

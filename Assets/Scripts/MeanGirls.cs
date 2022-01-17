@@ -23,7 +23,7 @@ public class MeanGirls : MonoBehaviour
     {
         if(col.gameObject.CompareTag("ball"))
         {
-            gameManager.score -= 200;
+            gameManager.score -= 100;
             audioSource.PlayOneShot(hitAudio, 0.69f);
         }
     }

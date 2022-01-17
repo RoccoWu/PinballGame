@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public float lives = 3;
     public float score = 0;
     public bool gameOver = false;
+    public AudioClip sheesh;
+    public AudioSource audioSource;
     public GameObject ball;
     public GameObject ballRespawn;
     public float ballBounciness;
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
         //gameOverscreen.GetComponent<CanvasGroup>().interactable = false;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -58,6 +61,11 @@ public class GameManager : MonoBehaviour
         if(gameOver)
         {
             score = 0;
+        }
+
+        if(score % 500 == 0 && score > 0)
+        {
+            audioSource.PlayOneShot(sheesh, 1f);
         }
     }
 
