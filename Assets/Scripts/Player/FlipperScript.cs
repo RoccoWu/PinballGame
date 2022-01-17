@@ -62,7 +62,7 @@ public class FlipperScript : MonoBehaviour
     {
       if(col.gameObject.CompareTag("ball") && activeFlipper)
       {
-        gameManager.score += 50;
+        gameManager.score += 100;
         activeFlipper = false;
         print("SHEEESH");
       }

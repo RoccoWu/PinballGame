@@ -23,7 +23,7 @@ public class Nerd : MonoBehaviour
     {
         if(col.gameObject.CompareTag("ball"))
         {
-            gameManager.score += 300;
+            gameManager.score += 500;
             audioSource.PlayOneShot(hitAudio, 0.69f);
         }
     }

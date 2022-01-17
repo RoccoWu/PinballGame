@@ -6,7 +6,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public AudioManager audioManager;
+
     [Header("Main Menu")]
+    public bool inMenu = true;
     public GameObject startMenu;
     public GameObject tutorial;
     public GameObject credits;
@@ -15,7 +18,8 @@ public class GameManager : MonoBehaviour
     public Button closetutorialButton;
     public Button creditButton;
     public Button closecreditButton;
-    public Button quitButton;   
+    public Button quitButton;  
+    public AudioClip uiClickSFX; 
 
     [Header("Game Over")]
     public GameObject gameOverscreen; 
@@ -39,6 +43,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         GameUI.GetComponent<CanvasGroup>().alpha = 0;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
@@ -96,10 +101,16 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameStart = true;
+        inMenu = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 0;    
         startMenu.GetComponent<CanvasGroup>().interactable = false;            
         startMenu.GetComponent<CanvasGroup>().interactable = false;       
-        GameUI.GetComponent<CanvasGroup>().alpha = 1;     
+        GameUI.GetComponent<CanvasGroup>().alpha = 1;   
+        audioSource.clip = uiClickSFX;
+        audioSource.Play(); 
+        audioManager.stopMainMenuMusic();
+        audioManager.anim.SetTrigger("MusicFadeIn");
+        audioManager.playGameMusic(); 
    }
 
     public void Tutorial()
@@ -111,6 +122,8 @@ public class GameManager : MonoBehaviour
         GameUI.GetComponent<CanvasGroup>().alpha = 0;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         gameOver = false;
+        audioSource.clip = uiClickSFX;
+        audioSource.Play();
     }
 
     public void CloseTutorial()
@@ -121,6 +134,8 @@ public class GameManager : MonoBehaviour
         tutorial.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        audioSource.clip = uiClickSFX;
+        audioSource.Play();
     }
 
     public void Credits()
@@ -129,6 +144,8 @@ public class GameManager : MonoBehaviour
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
         credits.GetComponent<CanvasGroup>().alpha = 1;
         credits.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        audioSource.clip = uiClickSFX;
+        audioSource.Play();
     }
 
     public void CloseCredits()
@@ -137,6 +154,8 @@ public class GameManager : MonoBehaviour
         credits.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        audioSource.clip = uiClickSFX;
+        audioSource.Play();
     }
     public void ReplayGame()
     {
@@ -148,10 +167,14 @@ public class GameManager : MonoBehaviour
         lives = 3;
         score = 0;
         ball.transform.position = ballRespawn.transform.position;
+        audioSource.clip = uiClickSFX;
+        audioSource.Play();
     }
 
     public void QuitGame()
     {
+        audioSource.clip = uiClickSFX;
+        audioSource.Play();
         Application.Quit();
     }
 
@@ -161,8 +184,13 @@ public class GameManager : MonoBehaviour
     {
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        startMenu.GetComponent<CanvasGroup>().alpha = 0; 
+        startMenu.GetComponent<CanvasGroup>().alpha = 1; 
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true; 
+        inMenu = true;
+        gameStart = false;
+        audioManager.playMainMenuMusic();
+        audioSource.clip = uiClickSFX;
+        audioSource.Play();
     }
 
 }
