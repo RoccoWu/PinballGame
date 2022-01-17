@@ -5,6 +5,8 @@ using UnityEngine;
 public class Teacher : MonoBehaviour
 {
     public GameManager gameManager;
+     public AudioClip hitAudio;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class Teacher : MonoBehaviour
         if(col.gameObject.CompareTag("ball"))
         {
             gameManager.score -= 100;
-            //play audio
+            audioSource.PlayOneShot(hitAudio, 0.69f);
         }
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Crush : MonoBehaviour
 {
     public GameManager gameManager;
+    public AudioClip hitAudio;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class Crush : MonoBehaviour
         if(col.gameObject.CompareTag("ball"))
         {
             gameManager.score -= 500;
-            //play audio
+            audioSource.PlayOneShot(hitAudio, 0.69f);
         }
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class GigaChad : MonoBehaviour
 {
     public GameManager gameManager;
+    public AudioClip hitAudio;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class GigaChad : MonoBehaviour
         if(col.gameObject.CompareTag("ball"))
         {
             gameManager.score += 690;
-            //play audio
+            audioSource.PlayOneShot(hitAudio, 0.69f);
         }
     }
 }

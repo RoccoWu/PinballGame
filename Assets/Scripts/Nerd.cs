@@ -5,6 +5,8 @@ using UnityEngine;
 public class Nerd : MonoBehaviour
 {
     public GameManager gameManager;
+    public AudioClip hitAudio;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class Nerd : MonoBehaviour
         if(col.gameObject.CompareTag("ball"))
         {
             gameManager.score += 300;
+            audioSource.PlayOneShot(hitAudio, 0.69f);
         }
     }
 }
