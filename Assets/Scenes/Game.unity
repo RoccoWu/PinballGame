@@ -24682,7 +24682,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838468133}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -29488,8 +29488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: 49.3}
-  m_SizeDelta: {x: 386.4442, y: 50}
+  m_AnchoredPosition: {x: 6, y: 49.3}
+  m_SizeDelta: {x: 493.3336, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011353581
 MonoBehaviour:
@@ -29539,8 +29539,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -31363,7 +31363,7 @@ PrefabInstance:
     - target: {fileID: 7072935913273430727, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
       propertyPath: maxPower
-      value: 45
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7072935913273430727, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
@@ -31373,7 +31373,7 @@ PrefabInstance:
     - target: {fileID: 7072935913273430727, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
       propertyPath: powerMultiplier
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7072935913592028099, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}

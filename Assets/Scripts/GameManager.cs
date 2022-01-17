@@ -82,6 +82,10 @@ public class GameManager : MonoBehaviour
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 1;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = true;
         gameOverscore.text = "Sheesh Points: " + score.ToString();
+        audioSource.PlayOneShot(sheesh, 1f);
+        audioSource.PlayOneShot(sheesh, 1f);
+        audioSource.PlayOneShot(sheesh, 1f);
+
     }
 
         public IEnumerator ballRespawnTimer()
@@ -182,10 +186,13 @@ public class GameManager : MonoBehaviour
 
     public void ReturntoMenu()
     {
+        GameUI.GetComponent<CanvasGroup>().alpha = 0;
+        GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1; 
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true; 
+        startMenu.GetComponent<CanvasGroup>().interactable = true; 
         inMenu = true;
         gameStart = false;
         audioManager.playMainMenuMusic();
