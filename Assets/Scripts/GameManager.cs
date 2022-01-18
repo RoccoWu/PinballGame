@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     public AudioManager audioManager;
+   [SerializeField] private EventSystem uiEventSystem; 
 
     [Header("Main Menu")]
     public bool inMenu = true;
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverscreen; 
     public TextMeshProUGUI gameOverscore;
     public Button returntoMenu;
+    public Button replayButton;
 
     [Header("Core Game Loop")]
     public bool gameStart = false;
@@ -64,7 +67,7 @@ public class GameManager : MonoBehaviour
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
         audioSource = GetComponent<AudioSource>();
         frog.SetActive(false);
-        print("velocity" + ball.GetComponent<Rigidbody>().velocity);
+        uiEventSystem = FindObjectOfType<EventSystem>();
     }
 
     // Update is called once per frame
@@ -91,16 +94,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        //print("game over");
+        uiEventSystem.firstSelectedGameObject = replayButton.gameObject;
         gameStart = false;
         GameUI.GetComponent<CanvasGroup>().alpha = 0;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         PlungerUI.GetComponent<CanvasGroup>().alpha = 0;
-        PlungerUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
-        gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        PlungerUI.GetComponent<CanvasGroup>().blocksRaycasts = false;        
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 1;
-        gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = true;        
+        gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = true;  
+        gameOverscreen.GetComponent<CanvasGroup>().interactable = true;       
         gameOverscore.text = "Sheesh Points: " + score.ToString();
         audioSource.PlayOneShot(sheesh, 1f);
     }
@@ -121,9 +123,7 @@ public class GameManager : MonoBehaviour
         frog.SetActive(true);
         print("froggy");
         StartCoroutine(ribbitFrog());
-        ball.GetComponent<SphereCollider>().material.bounciness = ballBounciness;
-        print("velocity:" + ball.GetComponent<Rigidbody>().velocity);
-        print("respawn");
+        ball.GetComponent<SphereCollider>().material.bounciness = ballBounciness;       
      }
 
      private IEnumerator ribbitFrog()
@@ -139,11 +139,11 @@ public class GameManager : MonoBehaviour
 //Menu Stuff
     public void StartGame()
     {
+        uiEventSystem.firstSelectedGameObject = startButton.gameObject;
         gameStart = true;
         inMenu = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 0;    
-        startMenu.GetComponent<CanvasGroup>().interactable = false;            
-        startMenu.GetComponent<CanvasGroup>().interactable = false;  
+        startMenu.GetComponent<CanvasGroup>().interactable = false;     
         PlungerUI.GetComponent<CanvasGroup>().alpha = 1;
         PlungerUI.GetComponent<CanvasGroup>().blocksRaycasts = true;     
         GameUI.GetComponent<CanvasGroup>().alpha = 1;   
@@ -156,12 +156,16 @@ public class GameManager : MonoBehaviour
 
     public void Tutorial()
     {
+        uiEventSystem.firstSelectedGameObject = tutorialButton.gameObject;
         startMenu.GetComponent<CanvasGroup>().alpha = 0;
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        startMenu.GetComponent<CanvasGroup>().interactable = false;
         tutorial.GetComponent<CanvasGroup>().alpha = 1;
         tutorial.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        tutorial.GetComponent<CanvasGroup>().interactable = true; 
         GameUI.GetComponent<CanvasGroup>().alpha = 0;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        GameUI.GetComponent<CanvasGroup>().interactable = false; 
         gameOver = false;
         audioSource.clip = uiClickSFX;
         audioSource.Play();
@@ -175,16 +179,21 @@ public class GameManager : MonoBehaviour
         tutorial.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        startMenu.GetComponent<CanvasGroup>().interactable = true; 
         audioSource.clip = uiClickSFX;
         audioSource.Play();
     }
 
     public void Credits()
-    {
-        startMenu.GetComponent<CanvasGroup>().alpha = 0;
-        startMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
+    {  
         credits.GetComponent<CanvasGroup>().alpha = 1;
         credits.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        credits.GetComponent<CanvasGroup>().interactable = true;       
+        startMenu.GetComponent<CanvasGroup>().alpha = 0;
+        startMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        startMenu.GetComponent<CanvasGroup>().interactable = false; 
+        
+        uiEventSystem.firstSelectedGameObject = closecreditButton.gameObject;
         audioSource.clip = uiClickSFX;
         audioSource.Play();
     }
@@ -195,6 +204,7 @@ public class GameManager : MonoBehaviour
         credits.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        startMenu.GetComponent<CanvasGroup>().interactable = false; 
         audioSource.clip = uiClickSFX;
         audioSource.Play();
     }
@@ -202,6 +212,7 @@ public class GameManager : MonoBehaviour
     {
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        gameOverscreen.GetComponent<CanvasGroup>().interactable = false; 
         PlungerUI.GetComponent<CanvasGroup>().alpha = 1;
         PlungerUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
         GameUI.GetComponent<CanvasGroup>().alpha = 1;
