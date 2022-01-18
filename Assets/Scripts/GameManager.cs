@@ -28,11 +28,15 @@ public class GameManager : MonoBehaviour
 
     [Header("Core Game Loop")]
     public bool gameStart = false;
+
+    public AudioClip loseSFX;
     public float ballRespawntimer;
     public AudioClip ballRespawnSFX;
+    public float frogTimer;
     public PlayerController playerController;
     public GameObject GameUI;
     public TextMeshProUGUI ballCounter, scoreCounter;
+    public GameObject frog;
     public float lives = 3;
     public float score = 0;
     public bool gameOver = false;
@@ -57,6 +61,7 @@ public class GameManager : MonoBehaviour
         //gameOverscreen.GetComponent<CanvasGroup>().interactable = false;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
         audioSource = GetComponent<AudioSource>();
+        frog.SetActive(false);
     }
 
     // Update is called once per frame
@@ -77,31 +82,46 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        print("game over");
+        //print("game over");
+        gameStart = false;
+        GameUI.GetComponent<CanvasGroup>().alpha = 0;
+        GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = true;
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 1;
-        gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = true;        
         gameOverscore.text = "Sheesh Points: " + score.ToString();
         audioSource.PlayOneShot(sheesh, 1f);
-        audioSource.PlayOneShot(sheesh, 1f);
-        audioSource.PlayOneShot(sheesh, 1f);
-
     }
 
-        public IEnumerator ballRespawnTimer()
-        {            
-           while(ballRespawntimer > 0)
-            {
-                yield return new WaitForSeconds(ballRespawntimer); 
-                ballRespawntimer--;
-            }            
-            ballRespawntimer = 0;
-            ball.transform.position = ballRespawn.transform.position;
-            audioSource.PlayOneShot(ballRespawnSFX, 1f);
-            ball.GetComponent<SphereCollider>().material.bounciness = ballBounciness;
-            print("respawn");
-    }
+    public IEnumerator ballRespawnTimer()
+    {      
+        audioSource.PlayOneShot(loseSFX,1f);      
+        while(ballRespawntimer > 0)
+        {
+           yield return new WaitForSeconds(ballRespawntimer); 
+           ballRespawntimer--;
+        } 
+        frogTimer = 0.5f;
+        audioSource.PlayOneShot(ballRespawnSFX, 1f);           
+        ballRespawntimer = 0;
+        ball.transform.position = ballRespawn.transform.position;
+        frog.SetActive(true);
+        print("froggy");
+        StartCoroutine(ribbitFrog());
+        ball.GetComponent<SphereCollider>().material.bounciness = ballBounciness;
+        print("respawn");
+     }
+
+     private IEnumerator ribbitFrog()
+     {         
+         while(frogTimer > 0)
+         {
+             yield return new WaitForSeconds(frogTimer);
+             frogTimer--;
+         }
+         frog.SetActive(false);
+     }
 
 //Menu Stuff
     public void StartGame()
@@ -170,6 +190,7 @@ public class GameManager : MonoBehaviour
         GameUI.GetComponent<CanvasGroup>().alpha = 1;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
         gameOver = false;
+        gameStart = true;
         lives = 3;
         score = 0;
         ball.transform.position = ballRespawn.transform.position;
