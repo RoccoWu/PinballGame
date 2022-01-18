@@ -6918,7 +6918,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh439618
+  m_Name: pb_Mesh473488
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7914,7 +7914,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh439208
+  m_Name: pb_Mesh473066
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8994,7 +8994,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d44951032d15a684ba751326ae4e0466,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.455
+      value: 0.273
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d44951032d15a684ba751326ae4e0466,
         type: 3}
@@ -10044,7 +10044,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh440198
+  m_Name: pb_Mesh474044
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11045,7 +11045,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh439194
+  m_Name: pb_Mesh473052
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11359,7 +11359,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh439058
+  m_Name: pb_Mesh472916
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13631,7 +13631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 702834126}
   m_sendNavigationEvents: 1
-  m_DragThreshold: 8
+  m_DragThreshold: 50
 --- !u!4 &705580640
 Transform:
   m_ObjectHideFlags: 0
@@ -15720,7 +15720,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh439278
+  m_Name: pb_Mesh473136
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19475,7 +19475,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d44951032d15a684ba751326ae4e0466,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.455
+      value: 0.273
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d44951032d15a684ba751326ae4e0466,
         type: 3}
@@ -20745,7 +20745,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh438756
+  m_Name: pb_Mesh472602
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21196,7 +21196,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh438812
+  m_Name: pb_Mesh472662
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21610,7 +21610,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 0}
-  uiEventSystem: {fileID: 0}
   inMenu: 1
   startMenu: {fileID: 1007555446}
   tutorial: {fileID: 1922163669}
@@ -23945,7 +23944,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh439876
+  m_Name: pb_Mesh473734
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24245,7 +24244,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh440294
+  m_Name: pb_Mesh474140
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24595,9 +24594,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Right Flipper: E/RightBumper
+  m_text: 'Right Flipper: E/Right Bumper
 
-    Left Flipper: Q:/LeftBumper
+    Left Flipper: Q:/Left Bumper
 
     Plunger:
     Spacebar/Right Trigger'
@@ -25349,9 +25348,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: As the new kid at Sheeshu High School, Throw your tomatoes at the students,
-    teachers, and lunchladies! But be careful, don't hit your crush or the class
-    representative.
+  m_text: As the new kid at Sheeshu High School, throw your tomatoes at the students,
+    teachers, and lunch ladies! But be careful, don't hit the class representative
+    or your crush :3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 97f81258bd2007c4288bde89d5605fce, type: 2}
   m_sharedMaterial: {fileID: 3530870825222980900, guid: 97f81258bd2007c4288bde89d5605fce,
@@ -26550,7 +26549,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh439530
+  m_Name: pb_Mesh473400
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

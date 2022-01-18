@@ -262,6 +262,7 @@ public class GameManager : MonoBehaviour
         audioSource.Play();
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+        audioSource.Stop();
     }
 
 }
