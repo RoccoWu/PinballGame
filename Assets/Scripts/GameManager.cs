@@ -8,14 +8,13 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
     public AudioManager audioManager;
-   [SerializeField] private EventSystem uiEventSystem; 
 
     [Header("Main Menu")]
     public bool inMenu = true;
     public GameObject startMenu;
     public GameObject tutorial;
     public GameObject credits;
-    public Button startButton;
+    public Button startButton, startButtonTutorial, startButtonCredits;
     public Button tutorialButton;
     public Button closetutorialButton;
     public Button creditButton;
@@ -67,7 +66,7 @@ public class GameManager : MonoBehaviour
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
         audioSource = GetComponent<AudioSource>();
         frog.SetActive(false);
-        uiEventSystem = FindObjectOfType<EventSystem>();
+        EventSystem.current.SetSelectedGameObject(startButton.gameObject);
     }
 
     // Update is called once per frame
@@ -94,7 +93,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        uiEventSystem.firstSelectedGameObject = replayButton.gameObject;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(replayButton.gameObject);
         gameStart = false;
         GameUI.GetComponent<CanvasGroup>().alpha = 0;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -137,15 +137,21 @@ public class GameManager : MonoBehaviour
      }
 
 //Menu Stuff
-    public void StartGame()
+    public void StartGame() //start the game
     {
-        uiEventSystem.firstSelectedGameObject = startButton.gameObject;
+        EventSystem.current.SetSelectedGameObject(null);
         gameStart = true;
         inMenu = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 0;    
         startMenu.GetComponent<CanvasGroup>().interactable = false;     
         PlungerUI.GetComponent<CanvasGroup>().alpha = 1;
-        PlungerUI.GetComponent<CanvasGroup>().blocksRaycasts = true;     
+        PlungerUI.GetComponent<CanvasGroup>().blocksRaycasts = true;  
+        tutorial.GetComponent<CanvasGroup>().alpha = 0;
+        tutorial.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        tutorial.GetComponent<CanvasGroup>().interactable = false;  
+        credits.GetComponent<CanvasGroup>().alpha = 0;
+        credits.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        credits.GetComponent<CanvasGroup>().interactable = false;  
         GameUI.GetComponent<CanvasGroup>().alpha = 1;   
         audioSource.clip = uiClickSFX;
         audioSource.Play(); 
@@ -154,9 +160,10 @@ public class GameManager : MonoBehaviour
         audioManager.playGameMusic(); 
    }
 
-    public void Tutorial()
+    public void Tutorial() //click on tutorial to show tutorial
     {
-        uiEventSystem.firstSelectedGameObject = tutorialButton.gameObject;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButtonTutorial.gameObject);
         startMenu.GetComponent<CanvasGroup>().alpha = 0;
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().interactable = false;
@@ -171,7 +178,7 @@ public class GameManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void CloseTutorial()
+    public void CloseTutorial() //close tutorial and return to main menu
     {
         startMenu.GetComponent<CanvasGroup>().alpha = 0;
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -182,33 +189,37 @@ public class GameManager : MonoBehaviour
         startMenu.GetComponent<CanvasGroup>().interactable = true; 
         audioSource.clip = uiClickSFX;
         audioSource.Play();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton.gameObject);
     }
 
-    public void Credits()
-    {  
+    public void Credits() //click on credits to see credits menu
+    { 
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButtonCredits.gameObject);    
         credits.GetComponent<CanvasGroup>().alpha = 1;
         credits.GetComponent<CanvasGroup>().blocksRaycasts = true;
         credits.GetComponent<CanvasGroup>().interactable = true;       
         startMenu.GetComponent<CanvasGroup>().alpha = 0;
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().interactable = false; 
-        
-        uiEventSystem.firstSelectedGameObject = closecreditButton.gameObject;
         audioSource.clip = uiClickSFX;
-        audioSource.Play();
+        audioSource.Play();               
     }
 
-    public void CloseCredits()
+    public void CloseCredits() //close the credits menu and return to main menu
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton.gameObject);
         credits.GetComponent<CanvasGroup>().alpha = 0;
         credits.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
         startMenu.GetComponent<CanvasGroup>().blocksRaycasts = true;
-        startMenu.GetComponent<CanvasGroup>().interactable = false; 
+        startMenu.GetComponent<CanvasGroup>().interactable = true; 
         audioSource.clip = uiClickSFX;
         audioSource.Play();
     }
-    public void ReplayGame()
+    public void ReplayGame() //click on replay from game over to restart the game
     {
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -226,7 +237,7 @@ public class GameManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void QuitGame()
+    public void QuitGame() //exit the application
     {
         audioSource.clip = uiClickSFX;
         audioSource.Play();
@@ -235,7 +246,7 @@ public class GameManager : MonoBehaviour
 
     // GameOver
 
-    public void ReturntoMenu()
+    public void ReturntoMenu() //game over screen and returning to the menu
     {
         GameUI.GetComponent<CanvasGroup>().alpha = 0;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -249,6 +260,8 @@ public class GameManager : MonoBehaviour
         audioManager.playMainMenuMusic();
         audioSource.clip = uiClickSFX;
         audioSource.Play();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton.gameObject);
     }
 
 }
