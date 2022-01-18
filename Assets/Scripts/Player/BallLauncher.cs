@@ -49,7 +49,7 @@ public class BallLauncher : MonoBehaviour
              {
                  foreach(Rigidbody rb in ballList)
                  {
-                     rb.AddForce(launchPower * Vector3.forward);
+                     rb.AddForce(launchPower * Vector3.forward, ForceMode.Impulse);
                  }
              }
          }

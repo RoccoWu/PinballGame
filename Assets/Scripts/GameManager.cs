@@ -28,13 +28,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Core Game Loop")]
     public bool gameStart = false;
-
     public AudioClip loseSFX;
     public float ballRespawntimer;
     public AudioClip ballRespawnSFX;
     public float frogTimer;
+    public bool isSheesh = false;
     public PlayerController playerController;
-    public GameObject GameUI;
+    public GameObject GameUI, PlungerUI;
     public TextMeshProUGUI ballCounter, scoreCounter;
     public GameObject frog;
     public float lives = 3;
@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         GameUI.GetComponent<CanvasGroup>().alpha = 0;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        PlungerUI.GetComponent<CanvasGroup>().alpha = 0;
+        PlungerUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 1;
         tutorial.GetComponent<CanvasGroup>().alpha = 0;
         credits.GetComponent<CanvasGroup>().alpha = 0;
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
         audioSource = GetComponent<AudioSource>();
         frog.SetActive(false);
+        print("velocity" + ball.GetComponent<Rigidbody>().velocity);
     }
 
     // Update is called once per frame
@@ -76,7 +79,13 @@ public class GameManager : MonoBehaviour
 
         if(score % 500 == 0 && score > 0)
         {
+            isSheesh = true;
+        }
+
+        if(isSheesh)
+        {
             audioSource.PlayOneShot(sheesh, 1f);
+            isSheesh = false;
         }
     }
 
@@ -86,6 +95,8 @@ public class GameManager : MonoBehaviour
         gameStart = false;
         GameUI.GetComponent<CanvasGroup>().alpha = 0;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        PlungerUI.GetComponent<CanvasGroup>().alpha = 0;
+        PlungerUI.GetComponent<CanvasGroup>().blocksRaycasts = false;
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = true;
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 1;
@@ -106,10 +117,12 @@ public class GameManager : MonoBehaviour
         audioSource.PlayOneShot(ballRespawnSFX, 1f);           
         ballRespawntimer = 0;
         ball.transform.position = ballRespawn.transform.position;
+        ball.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
         frog.SetActive(true);
         print("froggy");
         StartCoroutine(ribbitFrog());
         ball.GetComponent<SphereCollider>().material.bounciness = ballBounciness;
+        print("velocity:" + ball.GetComponent<Rigidbody>().velocity);
         print("respawn");
      }
 
@@ -130,7 +143,9 @@ public class GameManager : MonoBehaviour
         inMenu = false;
         startMenu.GetComponent<CanvasGroup>().alpha = 0;    
         startMenu.GetComponent<CanvasGroup>().interactable = false;            
-        startMenu.GetComponent<CanvasGroup>().interactable = false;       
+        startMenu.GetComponent<CanvasGroup>().interactable = false;  
+        PlungerUI.GetComponent<CanvasGroup>().alpha = 1;
+        PlungerUI.GetComponent<CanvasGroup>().blocksRaycasts = true;     
         GameUI.GetComponent<CanvasGroup>().alpha = 1;   
         audioSource.clip = uiClickSFX;
         audioSource.Play(); 
@@ -187,6 +202,8 @@ public class GameManager : MonoBehaviour
     {
         gameOverscreen.GetComponent<CanvasGroup>().alpha = 0;
         gameOverscreen.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        PlungerUI.GetComponent<CanvasGroup>().alpha = 1;
+        PlungerUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
         GameUI.GetComponent<CanvasGroup>().alpha = 1;
         GameUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
         gameOver = false;

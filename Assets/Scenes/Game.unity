@@ -6643,6 +6643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 187769700}
   - component: {fileID: 187769701}
+  - component: {fileID: 187769702}
   m_Layer: 5
   m_Name: LaunchPower
   m_TagString: Untagged
@@ -6725,6 +6726,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!225 &187769702
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187769699}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!43 &200263505
 Mesh:
   m_ObjectHideFlags: 0
@@ -20533,6 +20546,7 @@ MonoBehaviour:
   ballRespawntimer: 2
   ballRespawnSFX: {fileID: 8300000, guid: fb673971aa7e368429ebb8873a20905b, type: 3}
   frogTimer: 0.5
+  isSheesh: 0
   playerController: {fileID: 333931327}
   GameUI: {fileID: 234778295}
   ballCounter: {fileID: 251661734}
@@ -31210,6 +31224,16 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7536140430449616981, guid: 210922eaff0718d4c9654fde59c09f28,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536140430449616981, guid: 210922eaff0718d4c9654fde59c09f28,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7536140430449616986, guid: 210922eaff0718d4c9654fde59c09f28,
         type: 3}
       propertyPath: m_Material
@@ -31866,7 +31890,7 @@ PrefabInstance:
     - target: {fileID: 7072935913273430727, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
       propertyPath: maxPower
-      value: 50
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7072935913273430727, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
@@ -31876,7 +31900,7 @@ PrefabInstance:
     - target: {fileID: 7072935913273430727, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
       propertyPath: powerMultiplier
-      value: 25
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7072935913592028099, guid: 747818cc2863b4d409604cdd396fa6c5,
         type: 3}
